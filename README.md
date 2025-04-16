@@ -19,9 +19,13 @@ The **Events Management** module is a custom Drupal 10 module that allows site a
   - Option to limit number of events on listing page
 - Logs configuration changes to a custom database table
 - Front-end:
-  - Event listing page (with pagination)
-  - Event details page
-  - Block to display the latest 5 created events
+
+## 📦 Documentation
+  - Event listing page /admin/events
+  - Event details page /admin/events/{event}/show
+  - Event create page /admin/events/add
+  - Event delete link /admin/events/{event}/delete
+  - Event update page /admin/events/{event}/edit
 
 ---
 
@@ -30,3 +34,4 @@ The **Events Management** module is a custom Drupal 10 module that allows site a
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/your-username/events_management.git
+
