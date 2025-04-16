@@ -1,0 +1,50 @@
+events_manager.settings:
+  path: '/admin/config/events-manager'
+  defaults:
+    _form: '\Drupal\events_manager\Form\EventsManagerConfigForm'
+    _title: 'Events Manager Settings'
+  requirements:
+    _permission: 'administer site configuration'
+
+event.list:
+  path: '/admin/events'
+  defaults:
+    _controller: Drupal\events_manager\Controller\EventController::index
+    _title: "All Data"
+  requirements:
+    _permission: 'administer events'
+
+event.edit_form:
+  path: '/admin/events/{event}/edit'
+  defaults:
+    _form: '\Drupal\events_manager\Form\EventForm'
+    _title: 'Edit Event'
+  requirements:
+    _permission: 'administer events'
+    event: \d+
+
+event.delete_form:
+  path: '/admin/events/{event}/delete'
+  defaults:
+    _form: '\Drupal\events_manager\Form\EventDeleteForm'
+    _title: 'Delete Event'
+  requirements:
+    _permission: 'administer events'
+    event: \d+
+
+event.add_form:
+  path: '/admin/events/add'
+  defaults:
+    _form: '\Drupal\events_manager\Form\EventForm'
+    _title: 'Add Event'
+  requirements:
+    _permission: 'administer events'
+
+event.show_form:
+  path: '/admin/events/{event}/show'
+  defaults:
+    _controller: Drupal\events_manager\Controller\EventController::show
+    _title: "Show Data"
+  requirements:
+    _permission: 'administer events'
+    event: \d+

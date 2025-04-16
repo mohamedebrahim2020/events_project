@@ -1,0 +1,10 @@
+<?php
+	/**
+	 * Implements hook_help().
+	 */
+	function events_manager_help($route_name) {
+		switch ($route_name) {
+			case 'help.page.events_manager':
+				return t('Custom module for managing events.');
+		}
+	}

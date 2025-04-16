@@ -1,0 +1,7 @@
+name: 'Events Manager'
+type: module
+description: 'Custom module for managing events.'
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - node

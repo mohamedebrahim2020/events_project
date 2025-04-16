@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function events_manager_schema()
+{
+    // Config log table
+    $schema['config_log'] = [
+      'description' => 'Logs configuration changes for My Module.',
+      'fields' => [
+        'id' => [
+          'type' => 'serial',
+          'not null' => TRUE,
+        ],
+        'uid' => [
+          'type' => 'int',
+          'not null' => TRUE,
+        ],
+        'message' => [
+          'type' => 'text',
+          'not null' => FALSE,
+        ],
+        'created' => [
+          'type' => 'int',
+          'not null' => TRUE,
+        ],
+      ],
+      'primary key' => ['id'],
+    ];
+
+  return $schema;
+}
