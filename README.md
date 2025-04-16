@@ -33,5 +33,9 @@ The **Events Management** module is a custom Drupal 10 module that allows site a
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/events_management.git
+git clone https://github.com/mohamedebrahim2020/events_management.git
+
+### 2. install project
+```bash
+composer install
 
