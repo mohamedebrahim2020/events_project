@@ -28,6 +28,7 @@ The **Events Management** module is a custom Drupal 10 module that allows site a
 - Front-end:
 
 ## 📦 Documentation
+  - Event Modlue config /admin/config/events-manager
   - Event listing page /admin/events
   - Event details page /admin/events/{event}/show
   - Event create page /admin/events/add
