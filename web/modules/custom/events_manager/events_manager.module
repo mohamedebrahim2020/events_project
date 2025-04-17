@@ -8,3 +8,21 @@
 				return t('Custom module for managing events.');
 		}
 	}
+
+	/**
+	 * Implements hook_theme().
+	 */
+	function events_manager_theme($existing, $type, $theme, $path) {
+		return [
+			'events_manager_event_list' => [
+				'variables' => [
+					'events' => [],
+					'add_event_url' => NULL,
+					'pager' => [
+						'#type' => 'pager',
+					]
+				],
+				'template' => 'events-manager-event-list',
+			],
+		];
+	}

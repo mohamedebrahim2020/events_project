@@ -1,0 +1,39 @@
+<div class="mb-3">
+    <a href="{{ add_event_url }}" class="button button--primary">
+        + Create Event
+    </a>
+</div>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>IDs</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Category</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for event in events %}
+        <tr>
+            <td>{{ event.id }}</td>
+            <td>{{ event.title }} </td>
+            <td><img src="{{ event.image }}" alt="{{ event.title }}" width="60" /></td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.start_time }}</td>
+            <td>{{ event.end_time }}</td>
+            <td>{{ event.category }}</td>
+            <td>
+                {{ event.view }}
+                {{ event.edit }}
+                {{ event.delete }}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+    {{ pager }}

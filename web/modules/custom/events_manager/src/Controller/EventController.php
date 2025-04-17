@@ -1,8 +1,8 @@
 <?php
 
 	/**
-	 * file
-	 * @Contains Drupal\events_manager\Controller\EventController.
+	 * @file
+	 * Contains Drupal\events_manager\Controller\EventController.
 	 */
 
 	namespace Drupal\events_manager\Controller;
@@ -20,7 +20,7 @@
 		 * @return array
 		 */
 		public function index() {
-			$config = \Drupal::config('events_manager.settings'); // Replace with your actual config name
+			$config = $this->config('events_manager.settings'); // Replace with your actual config name
 			$oldEvents = $config->get('show_past_events');
 			$today = date('Y-m-d 00:00:00');
 			//create table header
@@ -45,7 +45,7 @@
 			}
 			$pager = $query->extend('Drupal\Core\Database\Query\PagerSelectExtender')->limit($config->get('events_per_page'));
 			$results = $pager->execute()->fetchAll();
-			$rows = [];
+			$events = [];
 			foreach ($results as $data) {
 				$url_delete = Url::fromRoute('event.delete_form', ['event' => $data->id], []);
 				$url_edit = Url::fromRoute('event.edit_form', ['event' => $data->id], []);
@@ -55,7 +55,7 @@
 				$linkView = Link::fromTextAndUrl('View', $url_view);
 
 				//get data
-				$rows[] = [
+				$events[] = [
 					'id' => $data->id,
 					'title' => $data->title,
 					'image' => $data->image,
@@ -68,14 +68,16 @@
 					'edit' =>  $linkEdit,
 				];
 			}
-			// render table
-			$form['table'] = [
-				'#type' => 'table',
-				'#header' => $header_table,
-				'#rows' => $rows,
-				'#empty' => $this->t('No data found'),
+			$add_event_url = Url::fromRoute('event.add_form')->toString();
+
+			return [
+				'#theme' => 'events_manager_event_list',
+				'#events' => $events,
+				'#add_event_url' => $add_event_url,
+				'pager' => [
+					'#type' => 'pager',
+				],
 			];
-			return $form;
 		}
 
 		/**

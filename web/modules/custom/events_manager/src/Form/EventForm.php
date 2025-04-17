@@ -167,6 +167,7 @@
 
 				$this->messenger()->addMessage($this->t('Event created.'));
 			}
+			$form_state->setRedirect('event.list');
 		}
 
 	}
